@@ -1,7 +1,6 @@
 package com.jetug.chassis_addon;
 
 
-import com.jetug.chassis_addon.common.foundation.registery.EntityTypeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -15,11 +14,11 @@ public class ChassisAddon {
     public static final IEventBus MOD_EVENT_BUS = FMLJavaModLoadingContext.get().getModEventBus();
 
     public ChassisAddon() {
-        register();
+        //register();
         EVENT_BUS.register(this);
     }
-
-    private void register() {
-        EntityTypeRegistry.register(MOD_EVENT_BUS);
-    }
+//
+//    private void register() {
+//        EntityTypeRegistry.register(MOD_EVENT_BUS);
+//    }
 }

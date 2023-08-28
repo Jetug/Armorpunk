@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.jetug.chassis_addon.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "chassis_addon.mixin-refmap.json",
+  "minVersion": "0.8",
+  "mixins": [
+  ]
+}
