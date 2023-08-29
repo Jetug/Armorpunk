@@ -120,13 +120,26 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    flatDir {
+        dirs 'lib'
+    }
 }
 
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.0'
 
-    implementation fileTree('libs') { include '*.jar' }
+    //implementation fg.deobf("curse.maven:power_armor_mod-845956:4715444")
+
+    //implementation files{'libs/geckolib-forge-1.18-3.0.57.jar'}
+
+    implementation fg.deobf('com.jetug:chassis_core:1.0')
 
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.18:3.0.57')
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'

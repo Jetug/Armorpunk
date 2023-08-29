@@ -16,6 +16,7 @@ public class ChassisAddon {
     public ChassisAddon() {
         //register();
         EVENT_BUS.register(this);
+        //var s = ChassisCore.MOD_ID;
     }
 //
 //    private void register() {

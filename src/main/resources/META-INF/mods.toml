@@ -59,9 +59,9 @@ mandatory=true #mandatory
     versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
-#[[dependencies.chassis_addon]]
-#    modId="power_armor_mod"
-#    mandatory=true
-#    versionRange="[1.5.2,)"
-#    ordering="NONE"
-#    side="BOTH"
+[[dependencies.chassis_addon]]
+    modId="chassis_addon"
+    mandatory=true
+    versionRange="[1.0,)"
+    ordering="NONE"
+    side="BOTH"
