@@ -135,7 +135,7 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.0'
 
-    //implementation fg.deobf("curse.maven:power_armor_mod-845956:4715444")
+    //implementation fg.deobf("curse.maven:chassis_core-845956:4715444")
 
     //implementation files{'libs/geckolib-forge-1.18-3.0.57.jar'}
 
