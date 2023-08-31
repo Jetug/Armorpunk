@@ -22,8 +22,8 @@ public class HeatRenderer implements IIngameOverlay
     public void render(ForgeIngameGui gui, PoseStack poseStack, float partialTick, int width, int height) {
         if (!isWearingSteamChassis()) return;
 
-        //RenderSystem.setShaderTexture(0, Textures.GUI_HUD);
-        //RenderSystem.enableBlend();
+        RenderSystem.setShaderTexture(0, Textures.GUI_HUD);
+        RenderSystem.enableBlend();
         var minecraft = Minecraft.getInstance();
         var screenWidth  = minecraft.getWindow().getGuiScaledWidth();
         var screenHeight = minecraft.getWindow().getGuiScaledHeight();
@@ -31,7 +31,7 @@ public class HeatRenderer implements IIngameOverlay
         var x = screenWidth / 2 + BAR_OFFSET_X;
         var y = height - BG_HEIGHT;
 
-        //gui.blit(poseStack, x, y, 0, 0, BG_WIDTH, BG_HEIGHT);
+        gui.blit(poseStack, x, y, 0, 0, BG_WIDTH, BG_HEIGHT);
 
         var armor = getSteamChassis(minecraft.player);
         int heat = armor.heatController.getHeatInPercent();
@@ -40,7 +40,7 @@ public class HeatRenderer implements IIngameOverlay
         var offset = 26 * arrowNumber;
 
         RenderSystem.setShaderTexture(0, Textures.GUI_ARROW);
-        gui.blit(poseStack, x + 10, y + 8, 0,  0, 25, 17);
+        gui.blit(poseStack, x + 10, y + 8, offset, 0, 25, 17, 443,31);
     }
 
 }
