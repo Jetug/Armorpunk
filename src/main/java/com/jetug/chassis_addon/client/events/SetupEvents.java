@@ -10,6 +10,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.ClientRegistry;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.gui.ForgeIngameGui;
 import net.minecraftforge.client.gui.OverlayRegistry;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -19,9 +20,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import static com.jetug.chassis_addon.common.foundation.registery.ContainerRegistry.CASTING_TABLE_MENU;
 import static com.jetug.chassis_addon.common.foundation.registery.EntityTypeRegistry.ARMOR_CHASSIS;
 import static com.jetug.chassis_core.client.KeyBindings.getKeys;
+import static com.jetug.chassis_core.common.util.helpers.PlayerUtils.isWearingChassis;
 
 @Mod.EventBusSubscriber(modid = ChassisAddon.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class SetupEvents {
+
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent()
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event){

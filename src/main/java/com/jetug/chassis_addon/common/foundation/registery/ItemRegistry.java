@@ -20,7 +20,7 @@ public class ItemRegistry {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, ChassisAddon.MOD_ID);
 
-    public static final RegistryObject<Item> PA_FRAME = ITEMS.register("pa_frame", ArmorChassisItem::new);
+    public static final RegistryObject<Item> STEAM_CHASSIS = ITEMS.register("steam_chassis", ArmorChassisItem::new);
 
     public static final RegistryObject<SteamArmorItem> PA_HELMET = ITEMS.register("pa_helmet", () ->
             new SteamArmorItem(IRON, BodyPart.HELMET, 0.9f));

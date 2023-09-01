@@ -1,5 +1,6 @@
 package com.jetug.chassis_addon.common.foundation.entity;
 
+import com.jetug.chassis_addon.ChassisAddon;
 import com.jetug.chassis_addon.common.foundation.container.menu.ArmorStationMenu;
 import com.jetug.chassis_addon.common.foundation.container.menu.ChassisMenu;
 import com.jetug.chassis_addon.common.foundation.item.*;
@@ -12,10 +13,12 @@ import com.jetug.chassis_core.common.foundation.item.ChassisArmor;
 import com.jetug.chassis_core.common.network.data.ArmorData;
 import com.jetug.chassis_core.common.util.helpers.*;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.damagesource.DamageSource;
@@ -63,6 +66,8 @@ public class SteamArmorChassis extends WearableChassis {
     private DashDirection dashDirection;
 
     public static final SteamChassisHand HAND = new SteamChassisHand();
+    public static final ResourceLocation ICON
+            = new ResourceLocation(ChassisAddon.MOD_ID, "textures/item/steam_chassis.png");
 
     public HeatController heatController = new HeatController(){
         @Override
@@ -79,24 +84,9 @@ public class SteamArmorChassis extends WearableChassis {
         }
     };
 
-    public boolean hasPowerKnuckle(){
-        return (getEquipment(RIGHT_HAND).getItem() instanceof PowerKnuckle);
-    }
-
-    public PowerKnuckle getPowerKnuckle(){
-        return (PowerKnuckle) getEquipment(RIGHT_HAND).getItem();
-    }
-
-    public boolean hasJetpack(){
-        return getEquipment(BACK).getItem() instanceof JetpackItem;
-    }
-
-    public JetpackItem getJetpack(){
-        return (JetpackItem) getEquipment(BACK).getItem();
-    }
-
-    public SteamArmorChassis(EntityType<? extends ArmorChassisBase> type, Level worldIn) {
-        super(type, worldIn);
+    @Override
+    public ResourceLocation getIcon() {
+        return ICON;
     }
 
     @Override
@@ -221,6 +211,26 @@ public class SteamArmorChassis extends WearableChassis {
 
         this.playBlockFallSound();
         return true;
+    }
+
+    public boolean hasPowerKnuckle(){
+        return (getEquipment(RIGHT_HAND).getItem() instanceof PowerKnuckle);
+    }
+
+    public PowerKnuckle getPowerKnuckle(){
+        return (PowerKnuckle) getEquipment(RIGHT_HAND).getItem();
+    }
+
+    public boolean hasJetpack(){
+        return getEquipment(BACK).getItem() instanceof JetpackItem;
+    }
+
+    public JetpackItem getJetpack(){
+        return (JetpackItem) getEquipment(BACK).getItem();
+    }
+
+    public SteamArmorChassis(EntityType<? extends ArmorChassisBase> type, Level worldIn) {
+        super(type, worldIn);
     }
 
     public boolean hasFireProtection(){
