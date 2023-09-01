@@ -1,7 +1,7 @@
 {
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "chassis_core:block/casting_table"
+		"0": "chassis_addon:block/casting_table"
 	},
 	"elements": [
 		{

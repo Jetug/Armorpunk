@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "chassis_core:item/power_knuckle"
+    "layer0": "chassis_addon:item/power_knuckle"
   }
 }
