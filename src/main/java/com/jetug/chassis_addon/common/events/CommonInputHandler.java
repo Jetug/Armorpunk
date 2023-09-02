@@ -2,7 +2,7 @@ package com.jetug.chassis_addon.common.events;
 
 import com.jetug.chassis_addon.ChassisAddon;
 import com.jetug.chassis_core.ChassisCore;
-import com.jetug.chassis_core.common.data.enums.DashDirection;
+import com.jetug.chassis_addon.common.data.enums.DashDirection;
 import com.jetug.chassis_core.common.events.CommonInputEvent;
 import com.jetug.chassis_core.common.events.ContainerChangedEvent;
 import com.jetug.chassis_core.common.input.InputKey;

@@ -1,24 +1,24 @@
 package com.jetug.chassis_addon.common.foundation.container.menu;
 
-import com.jetug.chassis_core.common.foundation.container.menu.base.EntityMenu;
+import com.jetug.chassis_core.common.foundation.container.menu.EntityMenu;
 import com.jetug.chassis_core.common.foundation.entity.WearableChassis;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 
+import static com.jetug.chassis_addon.common.foundation.registery.ContainerRegistry.ARMOR_STATION_MENU;
 import static com.jetug.chassis_core.common.data.constants.Gui.*;
 import static com.jetug.chassis_core.common.data.enums.BodyPart.*;
 import static com.jetug.chassis_core.common.foundation.entity.ArmorChassisBase.P_SIZE;
-import static com.jetug.chassis_core.common.foundation.registery.ContainerRegistry.ARMOR_STATION_MENU;
 
-public class ArmorStationMenu extends EntityMenu {
+public class SteamArmorStationMenu extends EntityMenu {
     private static final int INVENTORY_POS_Y = 105;
 
-    public ArmorStationMenu(int i, Inventory playerInventory) {
+    public SteamArmorStationMenu(int i, Inventory playerInventory) {
         this(i, new SimpleContainer(P_SIZE), playerInventory, null);
     }
 
-    public ArmorStationMenu(int containerId, Container container, Inventory playerInventory, WearableChassis entity) {
+    public SteamArmorStationMenu(int containerId, Container container, Inventory playerInventory, WearableChassis entity) {
         super(ARMOR_STATION_MENU.get(), containerId, container, playerInventory, entity, P_SIZE, INVENTORY_POS_Y);
         createSlot(BODY_FRAME       , FRAME_BODY_SLOT_POS      );
         createSlot(LEFT_ARM_FRAME   , FRAME_LEFT_ARM_SLOT_POS  );

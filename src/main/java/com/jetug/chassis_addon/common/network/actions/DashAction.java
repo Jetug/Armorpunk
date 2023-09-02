@@ -1,6 +1,6 @@
 package com.jetug.chassis_addon.common.network.actions;
 
-import com.jetug.chassis_core.common.data.enums.DashDirection;
+import com.jetug.chassis_addon.common.data.enums.DashDirection;
 import com.jetug.chassis_core.common.network.actions.Action;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;

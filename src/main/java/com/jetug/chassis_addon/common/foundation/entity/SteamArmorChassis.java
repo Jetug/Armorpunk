@@ -1,25 +1,21 @@
 package com.jetug.chassis_addon.common.foundation.entity;
 
 import com.jetug.chassis_addon.ChassisAddon;
-import com.jetug.chassis_addon.common.foundation.container.menu.ArmorStationMenu;
-import com.jetug.chassis_addon.common.foundation.container.menu.ChassisMenu;
+import com.jetug.chassis_addon.common.foundation.container.menu.SteamArmorStationMenu;
+import com.jetug.chassis_addon.common.foundation.container.menu.SteamChassisMenu;
 import com.jetug.chassis_addon.common.foundation.item.*;
 import com.jetug.chassis_addon.common.foundation.registery.ItemRegistry;
-import com.jetug.chassis_core.client.HandEntity;
-import com.jetug.chassis_core.common.data.enums.DashDirection;
+import com.jetug.chassis_addon.common.utils.AttackChargeController;
+import com.jetug.chassis_addon.common.data.enums.DashDirection;
 import com.jetug.chassis_core.common.foundation.entity.ArmorChassisBase;
+import com.jetug.chassis_core.common.foundation.entity.HandEntity;
 import com.jetug.chassis_core.common.foundation.entity.WearableChassis;
-import com.jetug.chassis_core.common.foundation.item.ChassisArmor;
 import com.jetug.chassis_core.common.network.data.ArmorData;
 import com.jetug.chassis_core.common.util.helpers.*;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
@@ -37,20 +33,19 @@ import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.SoundKeyframeEvent;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 
 import java.util.List;
 import java.util.function.Consumer;
 
+import static com.jetug.chassis_addon.common.utils.PovUtils.getBlockHitResult;
 import static com.jetug.generated.animations.ArmorChassisAnimation.*;
 import static com.jetug.generated.animations.ArmorChassisAnimation.DASH_UP;
 import static com.jetug.chassis_core.common.data.enums.BodyPart.*;
 import static com.jetug.chassis_core.common.network.data.ArmorData.HEAT;
 import static com.jetug.chassis_core.common.util.helpers.AnimationHelper.setAnimation;
 import static com.jetug.chassis_core.common.util.helpers.MathHelper.getPercentOf;
-import static com.jetug.chassis_core.common.util.helpers.timer.PovUtils.getBlockHitResult;
 import static net.minecraft.client.renderer.debug.DebugRenderer.getTargetedEntity;
 import static net.minecraft.util.Mth.cos;
 import static net.minecraft.util.Mth.sin;
@@ -146,7 +141,7 @@ public class SteamArmorChassis extends WearableChassis {
         return new MenuProvider() {
             @Override
             public AbstractContainerMenu createMenu(int id, Inventory menu, Player player) {
-                return new ChassisMenu(id, inventory, menu, SteamArmorChassis.this);
+                return new SteamChassisMenu(id, inventory, menu, SteamArmorChassis.this);
             }
 
             @Override
@@ -161,7 +156,7 @@ public class SteamArmorChassis extends WearableChassis {
         return new MenuProvider() {
             @Override
             public AbstractContainerMenu createMenu(int id, Inventory menu, Player player) {
-                return new ArmorStationMenu(id, inventory, menu, SteamArmorChassis.this);
+                return new SteamArmorStationMenu(id, inventory, menu, SteamArmorChassis.this);
             }
 
             @Override

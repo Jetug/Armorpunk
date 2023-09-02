@@ -1,6 +1,6 @@
 package com.jetug.chassis_addon.common.foundation.entity;
 
-import com.jetug.chassis_core.client.HandEntity;
+import com.jetug.chassis_core.common.foundation.entity.HandEntity;
 import net.minecraft.client.Minecraft;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;

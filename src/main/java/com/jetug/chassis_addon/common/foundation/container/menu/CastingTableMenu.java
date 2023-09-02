@@ -3,7 +3,7 @@ package com.jetug.chassis_addon.common.foundation.container.menu;
 import com.jetug.chassis_addon.common.foundation.item.CastItem;
 import com.jetug.chassis_addon.common.foundation.registery.ContainerRegistry;
 import com.jetug.chassis_core.client.ClientData;
-import com.jetug.chassis_core.common.foundation.container.menu.base.BlockEntityMenu;
+import com.jetug.chassis_core.common.foundation.container.menu.BlockEntityMenu;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
