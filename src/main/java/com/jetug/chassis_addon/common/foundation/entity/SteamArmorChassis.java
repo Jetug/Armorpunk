@@ -55,6 +55,13 @@ import static software.bernie.geckolib3.core.builder.ILoopType.EDefaultLoopTypes
 
 public class SteamArmorChassis extends WearableChassis {
     private static final int MAX_ATTACK_CHARGE = 60;
+    public static final int COOLING_VALUE = 5;
+    public static final int MAX_PUNCH_FORCE = 20;
+    public static final int DASH_DURATION = 10;
+    public static final int PUNCH_DURATION = 10;
+
+    public static final int INVENTORY_SIZE = ArmorChassisBase.INVENTORY_SIZE + 6;
+
 
     private boolean isDashing = false;
     private boolean isPunching = false;
@@ -67,7 +74,7 @@ public class SteamArmorChassis extends WearableChassis {
     public HeatController heatController = new HeatController(){
         @Override
         public int getHeatCapacity(){
-            return hasEquipment(ENGINE) ? ((EngineItem)getEquipment(ENGINE).getItem()).overheat : 0;
+            return hasEquipment(ENGINE) ? ((EngineItem)getItem(ENGINE).getItem()).overheat : 0;
         }
     };
 
@@ -78,6 +85,23 @@ public class SteamArmorChassis extends WearableChassis {
                 super.addAttackCharge();
         }
     };
+
+    @Override
+    protected void createPartIdMap() {
+        super.createPartIdMap();
+        int i = inventorySize;
+        this.partIdMap.put(ENGINE    , i++);
+        this.partIdMap.put(BACK      , i++);
+        this.partIdMap.put(COOLING   , i++);
+        this.partIdMap.put(LEFT_HAND , i++);
+        this.partIdMap.put(RIGHT_HAND, i++);
+        this.partIdMap.put(BODY_FRAME, i++);
+        this.inventorySize = i;
+    }
+
+    public SteamArmorChassis(EntityType<? extends ArmorChassisBase> type, Level worldIn) {
+        super(type, worldIn);
+    }
 
     @Override
     public ResourceLocation getIcon() {
@@ -98,7 +122,7 @@ public class SteamArmorChassis extends WearableChassis {
             pushEntitiesAround();
         }
 
-        heatController.subHeat(COOLING);
+        heatController.subHeat(COOLING_VALUE);
         if(isInLava()){
             heatController.addHeat(20);
         }
@@ -107,23 +131,9 @@ public class SteamArmorChassis extends WearableChassis {
         }
     }
 
-    private void applyEffects(){
-        var player = getPlayerPassenger();
-
-        if(player != null) {
-            PlayerUtils.addEffect(player, MobEffects.DIG_SPEED         , 1);
-            PlayerUtils.addEffect(player, MobEffects.DAMAGE_BOOST      , 1);
-            PlayerUtils.addEffect(player, MobEffects.DAMAGE_RESISTANCE , 1);
-            if(hasFireProtection()) {
-                PlayerUtils.addEffect(player, MobEffects.FIRE_RESISTANCE, 1);
-                player.clearFire();
-            }
-        }
-    }
-
     @Override
     protected void updateSpeed() {
-        if(inventory.getItem(ENGINE.ordinal()).getItem() instanceof EngineItem engine)
+        if(getItem(ENGINE).getItem() instanceof EngineItem engine)
             setSpeed(getSpeedAttribute() * engine.speed);
         else {
             setSpeed(getMinSpeed());
@@ -131,7 +141,7 @@ public class SteamArmorChassis extends WearableChassis {
         }
 
         for (var part : armor){
-            if (inventory.getItem(part.ordinal()).getItem() instanceof SteamArmorItem armorItem)
+            if (getItem(part).getItem() instanceof SteamArmorItem armorItem)
                 setSpeed(getSpeed() * armorItem.speed);
         }
     }
@@ -209,27 +219,23 @@ public class SteamArmorChassis extends WearableChassis {
     }
 
     public boolean hasPowerKnuckle(){
-        return (getEquipment(RIGHT_HAND).getItem() instanceof PowerKnuckle);
+        return (getItem(RIGHT_HAND).getItem() instanceof PowerKnuckle);
     }
 
     public PowerKnuckle getPowerKnuckle(){
-        return (PowerKnuckle) getEquipment(RIGHT_HAND).getItem();
+        return (PowerKnuckle) getItem(RIGHT_HAND).getItem();
     }
 
     public boolean hasJetpack(){
-        return getEquipment(BACK).getItem() instanceof JetpackItem;
+        return getItem(BACK).getItem() instanceof JetpackItem;
     }
 
     public JetpackItem getJetpack(){
-        return (JetpackItem) getEquipment(BACK).getItem();
-    }
-
-    public SteamArmorChassis(EntityType<? extends ArmorChassisBase> type, Level worldIn) {
-        super(type, worldIn);
+        return (JetpackItem) getItem(BACK).getItem();
     }
 
     public boolean hasFireProtection(){
-        return getEquipment(BODY_FRAME).getItem() == ItemRegistry.FIREPROOF_COATING.get();
+        return getItem(BODY_FRAME).getItem() == ItemRegistry.FIREPROOF_COATING.get();
     }
 
     public boolean isPunching() {
@@ -247,7 +253,6 @@ public class SteamArmorChassis extends WearableChassis {
     boolean playerHandIsEmpty() {
         return getPlayerPassenger().getItemInHand(MAIN_HAND).isEmpty();
     }
-
 
     public void dash(DashDirection direction) {
         if (!hasJetpack() || !hasEquipment(ENGINE)) return;
@@ -279,6 +284,20 @@ public class SteamArmorChassis extends WearableChassis {
 
     private int getDashHeat(){
         return hasJetpack() ? getJetpack().heat : 0;
+    }
+
+    private void applyEffects(){
+        var player = getPlayerPassenger();
+
+        if(player != null) {
+            PlayerUtils.addEffect(player, MobEffects.DIG_SPEED         , 1);
+            PlayerUtils.addEffect(player, MobEffects.DAMAGE_BOOST      , 1);
+            PlayerUtils.addEffect(player, MobEffects.DAMAGE_RESISTANCE , 1);
+            if(hasFireProtection()) {
+                PlayerUtils.addEffect(player, MobEffects.FIRE_RESISTANCE, 1);
+                player.clearFire();
+            }
+        }
     }
 
     private void pushEntitiesAround(){

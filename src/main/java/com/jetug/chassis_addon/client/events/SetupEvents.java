@@ -3,7 +3,6 @@ package com.jetug.chassis_addon.client.events;
 import com.jetug.chassis_addon.ChassisAddon;
 import com.jetug.chassis_addon.client.hud.HeatRenderer;
 import com.jetug.chassis_addon.client.renderers.SteamArmorRenderer;
-import com.jetug.chassis_addon.common.foundation.container.screen.CastingTableScreen;
 import com.jetug.chassis_addon.common.foundation.registery.GuiRegistry;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -19,7 +18,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import static com.jetug.chassis_addon.common.foundation.registery.ContainerRegistry.*;
 import static com.jetug.chassis_addon.common.foundation.registery.EntityTypeRegistry.*;
-import static com.jetug.chassis_core.client.KeyBindings.*;
 
 @Mod.EventBusSubscriber(modid = ChassisAddon.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class SetupEvents {

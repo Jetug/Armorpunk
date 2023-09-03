@@ -8,7 +8,7 @@ import com.jetug.chassis_core.common.foundation.item.ChassisArmor;
 public class SteamArmorItem extends ChassisArmor {
     public final float speed;
 
-    public SteamArmorItem(ChassisArmorMaterial material, BodyPart part, float speed) {
+    public SteamArmorItem(ChassisArmorMaterial material, String part, float speed) {
         super(new Properties().tab(ModCreativeModeTab.CHASSIS_TAB), material, part);
         this.speed = speed;
     }

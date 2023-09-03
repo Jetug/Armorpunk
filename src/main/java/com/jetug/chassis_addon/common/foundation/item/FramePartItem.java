@@ -16,10 +16,10 @@ import static software.bernie.geckolib3.util.GeckoLibUtil.createFactory;
 
 public class FramePartItem extends ChassisEquipment implements IAnimatable {
     public AnimationFactory factory = createFactory(this);
-    public final BodyPart bodyPart;
+    public final String bodyPart;
     public FramePartRenderer renderer;
 
-    public FramePartItem(BodyPart bodyPart) {
+    public FramePartItem(String bodyPart) {
         super(new Properties().stacksTo(1).tab(ModCreativeModeTab.CHASSIS_TAB), bodyPart);
         this.bodyPart = bodyPart;
     }

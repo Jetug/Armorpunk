@@ -1,13 +1,10 @@
 package com.jetug.chassis_addon.common.events;
 
 import com.jetug.chassis_addon.ChassisAddon;
-import com.jetug.chassis_core.ChassisCore;
 import com.jetug.chassis_addon.common.data.enums.DashDirection;
 import com.jetug.chassis_core.common.events.CommonInputEvent;
-import com.jetug.chassis_core.common.events.ContainerChangedEvent;
 import com.jetug.chassis_core.common.input.InputKey;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,20 +15,18 @@ import static com.jetug.chassis_core.common.input.InputKey.*;
 import static com.jetug.chassis_core.common.input.KeyAction.PRESS;
 import static com.jetug.chassis_core.common.input.KeyAction.REPEAT;
 import static com.jetug.chassis_core.common.util.helpers.PlayerUtils.*;
-import static java.lang.System.out;
-import static net.minecraftforge.event.entity.player.PlayerInteractEvent.*;
 
 @Mod.EventBusSubscriber(modid = ChassisAddon.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CommonInputHandler {
     @SubscribeEvent(priority = EventPriority.NORMAL)
-    public static void onEntityContainerChange(CommonInputEvent event) {
+    public static void onCommonInput(CommonInputEvent event) {
         var player = event.getPlayer();
         var action = event.getAction();
         var key = event.getKey();
         if (!isWearingSteamChassis(player) || key == null) return;
 
-        if((action == PRESS || action == REPEAT) && key == JUMP)
-            getSteamChassis(player).jump();
+//        if((action == PRESS || action == REPEAT) && key == JUMP)
+//            getSteamChassis(player).jump();
 
         switch (action) {
             case PRESS -> onPress(key, player);
