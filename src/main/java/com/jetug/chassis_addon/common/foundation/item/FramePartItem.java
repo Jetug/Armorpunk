@@ -2,7 +2,7 @@ package com.jetug.chassis_addon.common.foundation.item;
 
 import com.jetug.chassis_addon.client.renderers.item.FramePartRenderer;
 import com.jetug.chassis_addon.common.foundation.registery.ModCreativeModeTab;
-import com.jetug.chassis_core.common.data.enums.BodyPart;
+import com.jetug.chassis_core.common.data.enums.ChassisPart;
 import com.jetug.chassis_core.common.foundation.item.ChassisEquipment;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraftforge.client.IItemRenderProperties;

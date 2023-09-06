@@ -36,13 +36,14 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.function.Consumer;
 
 import static com.jetug.chassis_addon.common.utils.PovUtils.getBlockHitResult;
 import static com.jetug.generated.animations.ArmorChassisAnimation.*;
 import static com.jetug.generated.animations.ArmorChassisAnimation.DASH_UP;
-import static com.jetug.chassis_core.common.data.enums.BodyPart.*;
+import static com.jetug.chassis_core.common.data.enums.ChassisPart.*;
 import static com.jetug.chassis_core.common.network.data.ArmorData.HEAT;
 import static com.jetug.chassis_core.common.util.helpers.AnimationHelper.setAnimation;
 import static com.jetug.chassis_core.common.util.helpers.MathHelper.getPercentOf;
@@ -53,6 +54,7 @@ import static net.minecraft.world.InteractionHand.MAIN_HAND;
 import static software.bernie.geckolib3.core.builder.ILoopType.EDefaultLoopTypes.*;
 import static software.bernie.geckolib3.core.builder.ILoopType.EDefaultLoopTypes.HOLD_ON_LAST_FRAME;
 
+@SuppressWarnings("unchecked")
 public class SteamArmorChassis extends WearableChassis {
     private static final int MAX_ATTACK_CHARGE = 60;
     public static final int COOLING_VALUE = 5;
@@ -60,8 +62,7 @@ public class SteamArmorChassis extends WearableChassis {
     public static final int DASH_DURATION = 10;
     public static final int PUNCH_DURATION = 10;
 
-    public static final int INVENTORY_SIZE = ArmorChassisBase.INVENTORY_SIZE + 6;
-
+    public static final int INVENTORY_SIZE = ArmorChassisBase.INVENTORY_SIZE + 10;
 
     private boolean isDashing = false;
     private boolean isPunching = false;
@@ -86,21 +87,29 @@ public class SteamArmorChassis extends WearableChassis {
         }
     };
 
-    @Override
-    protected void createPartIdMap() {
-        super.createPartIdMap();
-        int i = inventorySize;
-        this.partIdMap.put(ENGINE    , i++);
-        this.partIdMap.put(BACK      , i++);
-        this.partIdMap.put(COOLING   , i++);
-        this.partIdMap.put(LEFT_HAND , i++);
-        this.partIdMap.put(RIGHT_HAND, i++);
-        this.partIdMap.put(BODY_FRAME, i++);
-        this.inventorySize = i;
+    public static HashMap<String, Integer> STEAM_ARMOR_PART_IDS;
+
+    static{
+        int i = 5;
+        STEAM_ARMOR_PART_IDS = (HashMap<String, Integer>) PART_IDS.clone();
+        STEAM_ARMOR_PART_IDS.put(BODY_FRAME     , i++);
+        STEAM_ARMOR_PART_IDS.put(LEFT_ARM_FRAME , i++);
+        STEAM_ARMOR_PART_IDS.put(RIGHT_ARM_FRAME, i++);
+        STEAM_ARMOR_PART_IDS.put(LEFT_LEG_FRAME , i++);
+        STEAM_ARMOR_PART_IDS.put(RIGHT_LEG_FRAME, i++);
+        STEAM_ARMOR_PART_IDS.put(ENGINE         , i++);
+        STEAM_ARMOR_PART_IDS.put(BACK           , i++);
+        STEAM_ARMOR_PART_IDS.put(COOLING        , i++);
+        STEAM_ARMOR_PART_IDS.put(LEFT_HAND      , i++);
+        STEAM_ARMOR_PART_IDS.put(RIGHT_HAND     , i++);
     }
 
     public SteamArmorChassis(EntityType<? extends ArmorChassisBase> type, Level worldIn) {
-        super(type, worldIn);
+        super(type, worldIn, STEAM_ARMOR_PART_IDS);
+    }
+
+    public static int getId(String chassisPart){
+        return STEAM_ARMOR_PART_IDS.get(chassisPart);
     }
 
     @Override

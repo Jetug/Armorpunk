@@ -5,14 +5,14 @@ import com.jetug.chassis_core.common.foundation.item.ChassisArmor;
 import net.minecraft.world.item.Item;
 
 public class CastItem extends Item {
-    private final ChassisArmor result;
+    private final SteamArmorItem result;
 
-    public CastItem(ChassisArmor result) {
+    public CastItem(SteamArmorItem result) {
         super(new Properties().tab(ModCreativeModeTab.CHASSIS_TAB).stacksTo(1));
         this.result = result;
     }
 
-    public ChassisArmor getResult() {
+    public SteamArmorItem getResult() {
         return result;
     }
 }

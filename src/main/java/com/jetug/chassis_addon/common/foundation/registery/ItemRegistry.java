@@ -2,8 +2,7 @@ package com.jetug.chassis_addon.common.foundation.registery;
 
 import com.jetug.chassis_addon.ChassisAddon;
 import com.jetug.chassis_addon.common.foundation.item.*;
-import com.jetug.chassis_core.ChassisCore;
-import com.jetug.chassis_core.common.data.enums.BodyPart;
+import com.jetug.chassis_core.common.data.enums.ChassisPart;
 import com.jetug.chassis_core.common.foundation.item.*;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -13,7 +12,8 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
-import static com.jetug.chassis_addon.common.foundation.registery.ArmorMaterialRegistry.IRON;
+import static com.jetug.chassis_addon.common.foundation.registery.ArmorMaterialRegistry.IRON_HEAVY;
+import static com.jetug.chassis_addon.common.foundation.registery.ArmorMaterialRegistry.IRON_LIGHT;
 
 
 public class ItemRegistry {
@@ -23,40 +23,40 @@ public class ItemRegistry {
     public static final RegistryObject<Item> STEAM_CHASSIS = ITEMS.register("steam_chassis", ArmorChassisItem::new);
 
     public static final RegistryObject<SteamArmorItem> PA_HELMET = ITEMS.register("pa_helmet", () ->
-            new SteamArmorItem(IRON, BodyPart.HELMET, 0.9f));
+            new SteamArmorItem(IRON_HEAVY, ChassisPart.HELMET, 0.9f));
 
     public static final RegistryObject<SteamArmorItem> PA_BODY = ITEMS.register("pa_body", () ->
-            new SteamArmorItem(IRON, BodyPart.BODY_ARMOR, 0.9f));
+            new SteamArmorItem(IRON_HEAVY, ChassisPart.BODY_ARMOR, 0.9f));
 
     public static final RegistryObject<SteamArmorItem> PA_RIGHT_ARM = ITEMS.register("pa_right_arm", () ->
-            new SteamArmorItem(IRON, BodyPart.RIGHT_ARM_ARMOR, 0.9f));
+            new SteamArmorItem(IRON_HEAVY, ChassisPart.RIGHT_ARM_ARMOR, 0.9f));
 
     public static final RegistryObject<SteamArmorItem> PA_LEFT_ARM = ITEMS.register("pa_left_arm", () ->
-            new SteamArmorItem(IRON, BodyPart.LEFT_ARM_ARMOR, 0.9f));
+            new SteamArmorItem(IRON_HEAVY, ChassisPart.LEFT_ARM_ARMOR, 0.9f));
 
     public static final RegistryObject<SteamArmorItem> PA_RIGHT_LEG = ITEMS.register("pa_right_leg", () ->
-            new SteamArmorItem(IRON, BodyPart.RIGHT_LEG_ARMOR, 0.9f));
+            new SteamArmorItem(IRON_HEAVY, ChassisPart.RIGHT_LEG_ARMOR, 0.9f));
 
     public static final RegistryObject<SteamArmorItem> PA_LEFT_LEG = ITEMS.register("pa_left_leg", () ->
-            new SteamArmorItem(IRON, BodyPart.LEFT_LEG_ARMOR, 0.9f));
+            new SteamArmorItem(IRON_HEAVY, ChassisPart.LEFT_LEG_ARMOR, 0.9f));
 
     public static final RegistryObject<SteamArmorItem> ARMOR_LIGHT_HELMET = ITEMS.register("armor_light_helmet", () ->
-            new SteamArmorItem(IRON, BodyPart.HELMET, 1f));
+            new SteamArmorItem(IRON_LIGHT, ChassisPart.HELMET, 1f));
 
     public static final RegistryObject<SteamArmorItem> ARMOR_LIGHT_BODY = ITEMS.register("armor_light_body", () ->
-            new SteamArmorItem(IRON, BodyPart.BODY_ARMOR, 1f));
+            new SteamArmorItem(IRON_LIGHT, ChassisPart.BODY_ARMOR, 1f));
 
     public static final RegistryObject<SteamArmorItem> ARMOR_LIGHT_RIGHT_ARM = ITEMS.register("armor_light_right_arm", () ->
-            new SteamArmorItem(IRON, BodyPart.RIGHT_ARM_ARMOR, 1f));
+            new SteamArmorItem(IRON_LIGHT, ChassisPart.RIGHT_ARM_ARMOR, 1f));
 
     public static final RegistryObject<SteamArmorItem> ARMOR_LIGHT_LEFT_ARM = ITEMS.register("armor_light_left_arm", () ->
-            new SteamArmorItem(IRON, BodyPart.LEFT_ARM_ARMOR, 1f));
+            new SteamArmorItem(IRON_LIGHT, ChassisPart.LEFT_ARM_ARMOR, 1f));
 
     public static final RegistryObject<SteamArmorItem> ARMOR_LIGHT_RIGHT_LEG = ITEMS.register("armor_light_right_leg", () ->
-            new SteamArmorItem(IRON, BodyPart.RIGHT_LEG_ARMOR, 1f));
+            new SteamArmorItem(IRON_LIGHT, ChassisPart.RIGHT_LEG_ARMOR, 1f));
 
     public static final RegistryObject<SteamArmorItem> ARMOR_LIGHT_LEFT_LEG = ITEMS.register("armor_light_left_leg", () ->
-            new SteamArmorItem(IRON, BodyPart.LEFT_LEG_ARMOR, 1f));
+            new SteamArmorItem(IRON_LIGHT, ChassisPart.LEFT_LEG_ARMOR, 1f));
 
     public static final RegistryObject<Item> ENGINE = ITEMS.register("engine", () ->
             new EngineItem(1000, 6, 1f));
@@ -80,19 +80,19 @@ public class ItemRegistry {
             new DrillItem());
 
     public static final RegistryObject<Item> FRAME_BODY = ITEMS.register("frame_body", () ->
-            new FramePartItem(BodyPart.BODY_FRAME));
+            new FramePartItem(ChassisPart.BODY_FRAME));
 
     public static final RegistryObject<Item> FRAME_RIGHT_ARM = ITEMS.register("frame_right_arm", () ->
-            new FramePartItem(BodyPart.RIGHT_ARM_FRAME));
+            new FramePartItem(ChassisPart.RIGHT_ARM_FRAME));
 
     public static final RegistryObject<Item> FRAME_LEFT_ARM = ITEMS.register("frame_left_arm", () ->
-            new FramePartItem(BodyPart.LEFT_ARM_FRAME));
+            new FramePartItem(ChassisPart.LEFT_ARM_FRAME));
 
     public static final RegistryObject<Item> FRAME_RIGHT_LEG = ITEMS.register("frame_right_leg", () ->
-            new FramePartItem(BodyPart.RIGHT_LEG_FRAME));
+            new FramePartItem(ChassisPart.RIGHT_LEG_FRAME));
 
     public static final RegistryObject<Item> FRAME_LEFT_LEG = ITEMS.register("frame_left_leg", () ->
-            new FramePartItem(BodyPart.LEFT_LEG_FRAME));
+            new FramePartItem(ChassisPart.LEFT_LEG_FRAME));
 
     public static final RegistryObject<Item> CAST_HELMET = ITEMS.register("cast_helmet", () ->
             new CastItem(PA_HELMET.get()));
